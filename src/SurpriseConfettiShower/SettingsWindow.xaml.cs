@@ -29,6 +29,7 @@ public partial class SettingsWindow : Window
         FireworksOption.IsChecked == true ? EffectKind.Fireworks
         : AlternateOption.IsChecked == true ? EffectKind.Alternate
         : RandomOption.IsChecked == true ? EffectKind.Random
+        : MayhemOption.IsChecked == true ? EffectKind.Mayhem
         : EffectKind.Confetti;
 
     private void LoadControls()
@@ -37,6 +38,7 @@ public partial class SettingsWindow : Window
         FireworksOption.IsChecked = _edited.Effect == EffectKind.Fireworks;
         AlternateOption.IsChecked = _edited.Effect == EffectKind.Alternate;
         RandomOption.IsChecked = _edited.Effect == EffectKind.Random;
+        MayhemOption.IsChecked = _edited.Effect == EffectKind.Mayhem;
 
         SurpriseOption.IsChecked = _edited.Mode == TriggerMode.Surprise;
         ScheduleOption.IsChecked = _edited.Mode == TriggerMode.Scheduled;

@@ -7,6 +7,7 @@ public class EffectPlayerTests
     [Theory]
     [InlineData(EffectKind.Confetti)]
     [InlineData(EffectKind.Fireworks)]
+    [InlineData(EffectKind.Mayhem)]
     public void Resolve_PlainEffectsPlayAsChosen(EffectKind kind) =>
         Assert.Equal(kind, EffectPlayer.Resolve(kind, EffectKind.Fireworks, new Random(1)));
 

@@ -4,8 +4,11 @@ using System.Text.Json.Serialization;
 
 namespace SurpriseConfettiShower;
 
-/// <summary>Alternate and Random are choices, resolved to Confetti or Fireworks each time an effect plays.</summary>
-public enum EffectKind { Confetti, Fireworks, Alternate, Random }
+/// <summary>
+/// Mayhem plays confetti and fireworks together. Alternate and Random are choices, resolved to
+/// Confetti or Fireworks each time an effect plays.
+/// </summary>
+public enum EffectKind { Confetti, Fireworks, Alternate, Random, Mayhem }
 
 public enum TriggerMode { Surprise, Scheduled }
 
