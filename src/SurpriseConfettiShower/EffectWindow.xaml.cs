@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using Drawing = System.Drawing;
 
@@ -27,15 +28,43 @@ public partial class EffectWindow : Window
         InitializeComponent();
         _bounds = bounds;
 
-        EffectCanvas canvas = kind switch
+        EffectCanvas[] canvases = kind switch
         {
-            EffectKind.Fireworks => new FireworksEffect(),
-            _ => new ConfettiEffect(),
+            EffectKind.Fireworks => [new FireworksEffect()],
+            // Fireworks first, so the confetti falls in front of the bursts.
+            EffectKind.Mayhem => [new FireworksEffect(), new ConfettiEffect()],
+            _ => [new ConfettiEffect()],
         };
-        // Finished is raised from a render-loop callback, so let the frame end before tearing
-        // the window (and its composition target) down.
-        canvas.Finished += (_, _) => Dispatcher.InvokeAsync(Close);
-        Content = canvas;
+
+        // Stay open until the longest-running effect has played out.
+        var playing = canvases.Length;
+        foreach (var canvas in canvases)
+        {
+            // Finished is raised from a render-loop callback, so let the frame end before tearing
+            // the window (and its composition target) down.
+            canvas.Finished += (_, _) =>
+            {
+                if (--playing == 0)
+                {
+                    Dispatcher.InvokeAsync(Close);
+                }
+            };
+        }
+
+        if (canvases.Length == 1)
+        {
+            Content = canvases[0];
+        }
+        else
+        {
+            var layers = new Grid();
+            foreach (var canvas in canvases)
+            {
+                layers.Children.Add(canvas);
+            }
+
+            Content = layers;
+        }
     }
 
     protected override void OnSourceInitialized(EventArgs e)

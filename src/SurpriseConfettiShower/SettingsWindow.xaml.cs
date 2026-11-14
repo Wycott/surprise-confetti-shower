@@ -26,12 +26,19 @@ public partial class SettingsWindow : Window
     public Settings? Result { get; private set; }
 
     private EffectKind SelectedEffect =>
-        ConfettiOption.IsChecked == true ? EffectKind.Confetti : EffectKind.Fireworks;
+        FireworksOption.IsChecked == true ? EffectKind.Fireworks
+        : AlternateOption.IsChecked == true ? EffectKind.Alternate
+        : RandomOption.IsChecked == true ? EffectKind.Random
+        : MayhemOption.IsChecked == true ? EffectKind.Mayhem
+        : EffectKind.Confetti;
 
     private void LoadControls()
     {
         ConfettiOption.IsChecked = _edited.Effect == EffectKind.Confetti;
         FireworksOption.IsChecked = _edited.Effect == EffectKind.Fireworks;
+        AlternateOption.IsChecked = _edited.Effect == EffectKind.Alternate;
+        RandomOption.IsChecked = _edited.Effect == EffectKind.Random;
+        MayhemOption.IsChecked = _edited.Effect == EffectKind.Mayhem;
 
         SurpriseOption.IsChecked = _edited.Mode == TriggerMode.Surprise;
         ScheduleOption.IsChecked = _edited.Mode == TriggerMode.Scheduled;

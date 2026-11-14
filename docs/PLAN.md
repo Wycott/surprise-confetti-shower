@@ -92,7 +92,7 @@ enum ScheduleKind { EveryFullHour, SpecificTimes }
 sealed class Settings {
     EffectKind Effect { get; set; }            // default Confetti
     TriggerMode Mode { get; set; }             // default Surprise
-    int SurprisesPerDay { get; set; }          // 1..12, default 3
+    int SurprisesPerDay { get; set; }          // 1..24, default 3
     int ActiveFromHour { get; set; }           // 0..23, default 9
     int ActiveUntilHour { get; set; }          // 1..24, default 21 (exclusive)
     ScheduleKind Schedule { get; set; }        // default EveryFullHour

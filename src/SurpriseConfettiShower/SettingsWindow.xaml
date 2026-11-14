@@ -55,10 +55,26 @@
     <StackPanel>
         <StackPanel Margin="24,22,24,24">
             <TextBlock Style="{StaticResource SectionHeader}" Text="Effect"/>
-            <StackPanel Orientation="Horizontal">
+            <!-- A grid rather than two rows of buttons, so each column lines up whatever the label widths. -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
                 <RadioButton x:Name="ConfettiOption" GroupName="Effect" Content="Confetti" Margin="0,0,28,0"/>
-                <RadioButton x:Name="FireworksOption" GroupName="Effect" Content="Fireworks"/>
-            </StackPanel>
+                <RadioButton x:Name="FireworksOption" Grid.Column="1" GroupName="Effect" Content="Fireworks" Margin="0,0,28,0"/>
+                <RadioButton x:Name="AlternateOption" Grid.Row="1" GroupName="Effect" Content="Alternate" Margin="0,8,28,0"
+                             ToolTip="Confetti, then fireworks, then confetti..."/>
+                <RadioButton x:Name="RandomOption" Grid.Row="1" Grid.Column="1" GroupName="Effect" Content="Random" Margin="0,8,28,0"
+                             ToolTip="Confetti or fireworks, picked at random each time"/>
+                <RadioButton x:Name="MayhemOption" Grid.Row="1" Grid.Column="2" GroupName="Effect" Content="Mayhem" Margin="0,8,0,0"
+                             ToolTip="Confetti and fireworks, both at once"/>
+            </Grid>
 
             <TextBlock Style="{StaticResource SectionHeader}" Text="When" Margin="0,24,0,10"/>
 
