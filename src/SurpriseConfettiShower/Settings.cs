@@ -4,7 +4,8 @@ using System.Text.Json.Serialization;
 
 namespace SurpriseConfettiShower;
 
-public enum EffectKind { Confetti, Fireworks }
+/// <summary>Alternate and Random are choices, resolved to Confetti or Fireworks each time an effect plays.</summary>
+public enum EffectKind { Confetti, Fireworks, Alternate, Random }
 
 public enum TriggerMode { Surprise, Scheduled }
 
@@ -31,7 +32,7 @@ public sealed class Settings
     /// <summary>Rolled surprise times for today and tomorrow, kept so a restart does not re-roll them.</summary>
     public List<DateTime> SurpriseSchedule { get; set; } = [];
 
-    public const int MaxSurprisesPerDay = 12;
+    public const int MaxSurprisesPerDay = 24;
 
     private static readonly JsonSerializerOptions JsonOptions = new()
     {

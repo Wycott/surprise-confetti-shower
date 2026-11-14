@@ -55,10 +55,14 @@
     <StackPanel>
         <StackPanel Margin="24,22,24,24">
             <TextBlock Style="{StaticResource SectionHeader}" Text="Effect"/>
-            <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="ConfettiOption" GroupName="Effect" Content="Confetti" Margin="0,0,28,0"/>
-                <RadioButton x:Name="FireworksOption" GroupName="Effect" Content="Fireworks"/>
-            </StackPanel>
+            <WrapPanel>
+                <RadioButton x:Name="ConfettiOption" GroupName="Effect" Content="Confetti" Margin="0,0,22,4"/>
+                <RadioButton x:Name="FireworksOption" GroupName="Effect" Content="Fireworks" Margin="0,0,22,4"/>
+                <RadioButton x:Name="AlternateOption" GroupName="Effect" Content="Alternate" Margin="0,0,22,4"
+                             ToolTip="Confetti, then fireworks, then confetti..."/>
+                <RadioButton x:Name="RandomOption" GroupName="Effect" Content="Random" Margin="0,0,0,4"
+                             ToolTip="Confetti or fireworks, picked at random each time"/>
+            </WrapPanel>
 
             <TextBlock Style="{StaticResource SectionHeader}" Text="When" Margin="0,24,0,10"/>
 

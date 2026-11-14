@@ -12,7 +12,7 @@ nobody else is going to throw one. 🎉
 
 ## Features
 
-- Confetti shower or fireworks, your pick.
+- Confetti shower or fireworks, your pick - or let it alternate between them, or choose at random.
 - Full screen, across every monitor you have.
 - Click-through: the overlay never takes focus and never swallows a click, so it
   cannot interrupt what you are doing. It tidies itself away after a few seconds.
@@ -44,9 +44,9 @@ effect is due.
 
 | Setting | What it does |
 | --- | --- |
-| Effect | Confetti shower or fireworks. |
+| Effect | Confetti, Fireworks, Alternate (takes turns between the two) or Random (picks one each time). |
 | Trigger | Surprise or Scheduled - see below. |
-| Surprises per day | How many random effects you get, 1-12. Surprise mode only. |
+| Surprises per day | How many random effects you get, 1-24. Surprise mode only. |
 | Active hours | The window the surprises fall inside, whole hours only, so you are not confettied at 04:00. |
 | Schedule | Every full hour, or a list of times you pick. Scheduled mode only. |
 | Start with Windows | Adds or removes an `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` entry. On by default. |
